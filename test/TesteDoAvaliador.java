@@ -1,6 +1,9 @@
+import org.junit.Test;
+import org.junit.Assert;
 
 public class TesteDoAvaliador {
 		
+	@Test
 	public void testaMaiorLance() {
 		Usuario joao = new Usuario("Joao");
 		Usuario jose = new Usuario("José");
@@ -10,11 +13,11 @@ public class TesteDoAvaliador {
 		leilao.propoe(new Lance(jose, 400.0));
 		leilao.propoe(new Lance(maria, 250.0));
 		Avaliador leiloeiro = new Avaliador();
-		leiloeiro.avalia(leilao);
-		// imprime 400.0
-		System.out.println(leiloeiro.getMaiorLance());
+		leiloeiro.avalia(leilao);				
+		Assert.assertEquals(leiloeiro.getMaiorLance(),400,0.001);
 	}
 	
+	@Test
 	public void testaMenorLance() {
 		Usuario joao = new Usuario("Joao");
 		Usuario jose = new Usuario("José");
@@ -25,6 +28,6 @@ public class TesteDoAvaliador {
 		leilao.propoe(new Lance(maria, 250.0));
 		Avaliador leiloeiro = new Avaliador();
 		leiloeiro.avalia(leilao);
-		System.out.println(leiloeiro.getMenorLance());
+		Assert.assertEquals(leiloeiro.getMenorLance(),260,0.001);
 	}
 }
